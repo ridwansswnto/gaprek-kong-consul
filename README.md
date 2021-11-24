@@ -16,8 +16,17 @@ docker build -t home-image .
 docker run -d -p 8070:8070 --name=home-app home-image
 ```
 
+## Test DNS
+please refer to this doc: https://www.consul.io/docs/discovery/dns
+```
+dig @127.0.0.1 -p 8600 home-app.service.consul ANY
+dig @127.0.0.1 -p 8600 career-app.service.consul ANY
+dig @127.0.0.1 -p 8600 product-app.service.consul ANY
 
-### Deploy Kong
+```
+
+
+## Deploy Kong
 
 1. deploy postgress
 ```
