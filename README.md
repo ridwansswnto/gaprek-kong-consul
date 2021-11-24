@@ -6,7 +6,7 @@
 
 ## Deploy Consul Server
 ```
-docker run -d -p 8500:8500 -p 8600:8600/udp --name=consul-server consul agent -server -ui -node=consul-server-1 -bootstrap-expect=1 -client=0.0.0.0 
+docker run -d -p 8500:8500 -p 8600:8600/udp --name=consul-server consul agent -server -ui -node=consul-server-1 -bootstrap-expect=1 -client=0.0.0.0  -log-level=debug
 ```
 
 
