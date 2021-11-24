@@ -1,0 +1,9 @@
+{
+    "service": {
+        "name": "product-app",
+        "tags": [
+            "be"
+        ],
+        "port": 8090
+    }
+}

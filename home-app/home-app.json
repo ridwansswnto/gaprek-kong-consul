@@ -1,0 +1,9 @@
+{
+    "service": {
+        "name": "home-app",
+        "tags": [
+            "be"
+        ],
+        "port": 8070
+    }
+}
