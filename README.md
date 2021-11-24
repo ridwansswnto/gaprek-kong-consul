@@ -22,7 +22,6 @@ please refer to this doc: https://www.consul.io/docs/discovery/dns
 dig @127.0.0.1 -p 8600 home-app.service.consul ANY
 dig @127.0.0.1 -p 8600 career-app.service.consul ANY
 dig @127.0.0.1 -p 8600 product-app.service.consul ANY
-
 ```
 
 
@@ -69,17 +68,53 @@ docker run -d --name kong \
   kong:latest
 ```
 
-## Add service to KONG
+## Add service and routes to KONG
+
+Please refer to this doc: https://docs.konghq.com/gateway-oss/2.5.x/admin-api/#service-object
 ```
 curl -i -X POST \
 --url http://localhost:8001/services/ \
 --data 'name=home-svc' \
 --data 'host=home-app.service.consul'
+
+curl -i -X POST \
+--url http://localhost:8001/services/ \
+--data 'name=product-svc' \
+--data 'host=product-app.service.consul' \
+--data 'path=/product'
+
+curl -i -X POST \
+--url http://localhost:8001/services/ \
+--data 'name=career-svc' \
+--data 'host=career-app.service.consul' \
+--data 'path=/career'
+
+curl -i -X POST \
+--url http://localhost:8001/services/ \
+--data 'name=blog-svc' \
+--data 'host=blog-app.service.consul' \
+--data 'path=/blog'
 ```
 
+Please refer to this doc: https://docs.konghq.com/gateway-oss/2.5.x/admin-api/#route-object
 ```
 curl -i -X POST \
 --url http://localhost:8001/services/home-svc/routes \
 --data 'hosts[]=localhost' \
 --data 'paths=/home'
+
+curl -i -X POST \
+--url http://localhost:8001/services/product-svc/routes \
+--data 'hosts[]=localhost' \
+--data 'paths=/product'
+
+curl -i -X POST \
+--url http://localhost:8001/services/career-svc/routes \
+--data 'hosts[]=localhost' \
+--data 'paths=/career'
+
+curl -i -X POST \
+--url http://localhost:8001/services/blog-svc/routes \
+--data 'hosts[]=localhost' \
+--data 'paths=/blog'
 ```
