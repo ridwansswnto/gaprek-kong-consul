@@ -16,6 +16,18 @@ docker build -t home-image .
 docker run -d -p 8070:8070 --name=home-app home-image
 ```
 
+## Deploy Product APP
+```
+docker build -t product-image .
+docker run -d -p 8090:8090 --name=product-app product-image
+```
+
+## Deploy Career APP
+```
+docker build -t career-image .
+docker run -d -p 8080:8080 --name=career-app career-image
+```
+
 ## Test DNS
 please refer to this doc: https://www.consul.io/docs/discovery/dns
 ```
