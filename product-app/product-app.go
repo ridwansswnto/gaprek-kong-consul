@@ -6,13 +6,13 @@ import (
 )
 
 func product(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Halaman PRODUCT!!! AYOO KITA SERBUUUU"))
+	w.Write([]byte("Haloo Ini halaman PRODUCT, KITA JUALAN BANYAK JANJI LHOO"))
 }
 
 func main(){
 	mux := http.NewServeMux()
 	mux.HandleFunc("/product", product)
-	log.Println("Starting server on :800")
-	err := http.ListenAndServe(":8070", mux)
+	log.Println("Starting server on :8090")
+	err := http.ListenAndServe(":8090", mux)
 	log.Fatal(err)
 }
