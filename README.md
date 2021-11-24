@@ -72,7 +72,7 @@ docker run -d --name kong \
   -e "KONG_PROXY_ERROR_LOG=/dev/stderr" \
   -e "KONG_ADMIN_ERROR_LOG=/dev/stderr" \
   -e "KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl" \
-  -e "KONG_DNS_RESOLVER=172.17.0.3:8600" \
+  -e "KONG_DNS_RESOLVER=172.17.0.2:8600" \
   -p 8000:8000 \
   -p 8443:8443 \
   -p 8001:8001 \
@@ -104,7 +104,7 @@ curl -i -X POST \
 curl -i -X POST \
 --url http://localhost:8001/services/ \
 --data 'name=blog-svc' \
---data 'host=blog-app.service.consul' \
+--data 'host=career-app.service.consul' \
 --data 'path=/blog'
 ```
 
