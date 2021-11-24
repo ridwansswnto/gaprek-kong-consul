@@ -118,3 +118,23 @@ curl -i -X POST \
 --data 'hosts[]=localhost' \
 --data 'paths=/blog'
 ```
+
+
+## Deploy Konga
+
+```
+docker run --rm --link kong-database:kong-database \
+pantsel/konga -c prepare -a postgres -u postgresql://kong:kong@kong-database:5432/konga_db
+
+docker run -d --name konga \
+-p 1337:1337 \
+--link kong-database:kong-database \
+-e "DB_ADAPTER=postgres" \
+-e "DB_HOST=kong-database" \
+-e "DB_USER=kong" \
+-e "DB_PASSWORD=kong" \
+-e "DB_DATABASE=konga_db" \
+-e "KONGA_HOOK_TIMEOUT=120000" \
+-e "NODE_ENV=production" \
+pantsel/konga
+```
